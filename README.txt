@@ -5,7 +5,7 @@ GroupDocs HTML5 PDF Viewer plugin for Plone CMS (Source)
 
 ###Plugin installation steps:
 
-When plugin is available only on GitHub (not released to PyPi) it can be installed with buildout like this:
+When plugin is available only on GitHub (not released to Pypi) it can be installed with buildout like this:
 
 * Create groupdocs.viewer folder under C:\Plone42\src\ folder
 * Download files from GitHub and copy all the files into created folder.
@@ -26,10 +26,3 @@ When plugin is available only on GitHub (not released to PyPi) it can be install
 * Open the created page (http://localhost:8080/PloneGD/gd-test)  - GD Viwer will be embeded into portlet region - http://screencast.com/t/VMd3UZc5
 
 How to get [Document ID (GUID)](http://groupdocs.com/docs/pages/viewpage.action?pageId=1409575)
-
-###Sign, Manage, Annotate, Assemble, Compare and Convert Documents with GroupDocs
-* [GroupDocs Viewer - HTML5 PDF Viewer tool for Plone CMS](http://groupdocs.com/apps/viewer)
-* [Embed DOC, DOCX, PDF Viewer in your Plone CMS website] (https://plone.org/products/groupdocs-embed-viewer/)
-* [See package for GroupDocs Viewer plugin for Plone CMS](https://github.com/groupdocs/plone-groupdocs-viewer)
-
-###Created by [GroupDocs Marketplace Team](http://groupdocs.com/marketplace/).
