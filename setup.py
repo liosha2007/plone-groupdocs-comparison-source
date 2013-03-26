@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-This module contains the tool of groupdocs.viewer
+This module contains the tool of groupdocs.comparison
 """
 import os
 from setuptools import setup, find_packages
@@ -22,7 +22,7 @@ long_description = (
     'Detailed Documentation\n'
     '**********************\n'
     + '\n' +
-    read('src', 'groupdocs', 'viewer', 'README.txt')
+    read('src', 'groupdocs', 'comparison', 'README.txt')
     + '\n' +
     'Contributors\n'
     '************\n'
@@ -34,9 +34,9 @@ long_description = (
 
 tests_require = ['zope.testing']
 
-setup(name='groupdocs.viewer',
+setup(name='groupdocs.comparison',
       version=version,
-      description="GroupDocs Viewer for Plone CMS",
+      description="GroupDocs Comparison for Plone CMS",
       long_description=long_description,
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
@@ -59,7 +59,7 @@ setup(name='groupdocs.viewer',
                         ],
       tests_require=tests_require,
       extras_require=dict(test=tests_require),
-      test_suite='groupdocs.viewer.tests.test_docs.test_suite',
+      test_suite='groupdocs.comparison.tests.test_docs.test_suite',
       entry_points="""
       # -*- entry_points -*-
       [z3c.autoinclude.plugin]

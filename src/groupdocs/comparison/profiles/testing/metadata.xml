@@ -2,6 +2,6 @@
 <metadata>
   <version>0001</version>
   <dependencies>
-    <dependency>profile-groupdocs.viewer:default</dependency>
+    <dependency>profile-groupdocs.comparison:default</dependency>
   </dependencies>
 </metadata>

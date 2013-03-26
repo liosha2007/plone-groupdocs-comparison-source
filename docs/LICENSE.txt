@@ -1,4 +1,4 @@
-groupdocs.viewer Copyright 2012, <YOUR NAME HERE>
+groupdocs.comparison Copyright 2012, <YOUR NAME HERE>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

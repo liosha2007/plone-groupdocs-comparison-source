@@ -1,7 +1,7 @@
 """Common configuration constants
 """
 
-PROJECTNAME = 'groupdocs.viewer'
+PROJECTNAME = 'groupdocs.comparison'
 
 ADD_PERMISSIONS = {
     # -*- extra stuff goes here -*-

@@ -15,10 +15,10 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from plone.portlet.static import PloneMessageFactory as _
 
-logger = logging.getLogger('groupdocs.viewer')
+logger = logging.getLogger('groupdocs.comparison')
 
 
-class IGDViewerPortlet(IPortletDataProvider):
+class IGDComparisonPortlet(IPortletDataProvider):
     """A portlet which renders predefined static HTML.
 
     It inherits from IPortletDataProvider because for this portlet, the
@@ -28,22 +28,27 @@ class IGDViewerPortlet(IPortletDataProvider):
 
     header = schema.TextLine(
         title=_(u"Portlet header"),
-        description=_(u"Title of the GroupDocs Viewer portlet"),
+        description=_(u"Title of the GroupDocs Comparison portlet"),
         required=True)
 
     fileid = schema.TextLine(
         title=_(u"File ID"),
         description=_(u"GUID of the shared file from GroupDocs account"),
         required=True)
-        
+
+    compareKey = schema.TextLine(
+        title=_(u"Compare KEY"),
+        description=_(u"Compare KEY from GroupDocs account"),
+        required=True)
+
     width = schema.TextLine(
         title=_(u"Width"),
-        description=_(u"Width of the Viewer"),
+        description=_(u"Width of the Comparison"),
         required=True)
         
     height = schema.TextLine(
         title=_(u"Height"),
-        description=_(u"Height of the Viewer"),
+        description=_(u"Height of the Comparison"),
         required=True)
 
     omit_border = schema.Bool(
@@ -72,20 +77,22 @@ class Assignment(base.Assignment):
     with columns.
     """
 
-    implements(IGDViewerPortlet)
+    implements(IGDComparisonPortlet)
 
-    header = _(u"title_gdviewer_portlet", default=u"GroupDocs Viewer portlet")
+    header = _(u"title_gdcomparison_portlet", default=u"GroupDocs Comparison portlet")
     fileid = u""
+    compareKey = u""
     width = u""
     height = u""
     omit_border = False
     footer = u""
     more_url = ''
 
-    def __init__(self, header=u"", fileid=u"", width=u"", height=u"", omit_border=False, footer=u"",
+    def __init__(self, header=u"", fileid=u"", compareKey=u"", width=u"", height=u"", omit_border=False, footer=u"",
                  more_url=''):
         self.header = header
         self.fileid = fileid
+        self.compareKey = compareKey
         self.width = width
         self.height = height
         self.omit_border = omit_border
@@ -108,7 +115,7 @@ class Renderer(base.Renderer):
     of this class. Other methods can be added and referenced in the template.
     """
 
-    render = ViewPageTemplateFile('gdviewer.pt')
+    render = ViewPageTemplateFile('gdcomparison.pt')
 
     def css_class(self):
         """Generate a CSS class from the portlet header
@@ -124,9 +131,9 @@ class Renderer(base.Renderer):
         return bool(self.data.footer)
 
     def transformed(self, mt='text/x-html-safe'):
-        """Transform imput data to get iframe code for GroupDocs Embedded Viewer.
+        """Transform imput data to get iframe code for GroupDocs Embedded Comparison.
         """
-        frame_source = '<iframe src="https://apps.groupdocs.com/document-viewer/Embed/' + self.data.fileid + '?quality=50&use_pdf=False&download=False" frameborder="0" width="' + self.data.width + '" height="' + self.data.height + '"></iframe>'
+        frame_source = '<iframe src="http://apps.groupdocs.com/document-comparison/embed/' + self.data.compareKey + '/' + self.data.fileid + '" frameborder="0" width="' + self.data.width + '" height="' + self.data.height + '"></iframe>'
 
         if frame_source:
             return frame_source
@@ -140,10 +147,10 @@ class AddForm(base.AddForm):
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
-    form_fields = form.Fields(IGDViewerPortlet)
-    label = _(u"title_add_viewer_portlet",
-              default=u"Add groupdocs viewer portlet")
-    description = _(u"description_viewer_portlet",
+    form_fields = form.Fields(IGDComparisonPortlet)
+    label = _(u"title_add_comparison_portlet",
+              default=u"Add groupdocs comparison portlet")
+    description = _(u"description_comparison_portlet",
                     default=u"A portlet which can display GroupDocs Embedded Viwer.")
 
     def create(self, data):
@@ -156,8 +163,8 @@ class EditForm(base.EditForm):
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
     """
-    form_fields = form.Fields(IGDViewerPortlet)
-    label = _(u"title_edit_viewer_portlet",
-              default=u"Edit GroupDocs Viewer portlet")
-    description = _(u"description_viewer_portlet",
+    form_fields = form.Fields(IGDComparisonPortlet)
+    label = _(u"title_edit_comparison_portlet",
+              default=u"Edit GroupDocs Comparison portlet")
+    description = _(u"description_comparison_portlet",
                     default=u"A portlet which can display GroupDocs Embedded Viwer.")

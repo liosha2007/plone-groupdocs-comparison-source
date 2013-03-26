@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="groupdocs.viewer">
+    i18n_domain="groupdocs.comparison">
 
   <include package="plone.app.contentmenu" />
 

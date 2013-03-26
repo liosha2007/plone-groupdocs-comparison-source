@@ -2,13 +2,13 @@ import unittest2 as unittest
 
 from Products.CMFCore.utils import getToolByName
 
-from groupdocs.viewer.testing import\
-    GROUPDOCS_VIEWER_INTEGRATION
+from groupdocs.comparison.testing import\
+    GROUPDOCS_COMPARISON_INTEGRATION
 
 
 class TestExample(unittest.TestCase):
 
-    layer = GROUPDOCS_VIEWER_INTEGRATION
+    layer = GROUPDOCS_COMPARISON_INTEGRATION
     
     def setUp(self):
         self.app = self.layer['app']
@@ -19,7 +19,7 @@ class TestExample(unittest.TestCase):
         """ Validate that our products GS profile has been run and the product 
             installed
         """
-        pid = 'groupdocs.viewer'
+        pid = 'groupdocs.comparison'
         installed = [p['id'] for p in self.qi_tool.listInstalledProducts()]
         self.assertTrue(pid in installed,
                         'package appears not to have been installed')
